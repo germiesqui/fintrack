@@ -1,12 +1,15 @@
-import { useExpenses } from "../context/ExpenseContext"
+import { useExpenseStats } from "../hooks/useExpenseStats"
 
 export function DashboardPage(){
-    const { expenses } = useExpenses()
-    const total = expenses.reduce((sum, e) => sum + e.amount, 0)
+    const { total, count, byCategory } = useExpenseStats()
     return (
         <div>
-            <p>Number of expenses: {expenses.length}</p>
+            <p>Number of expenses: {count}</p>
             <p>Total Amount: ${total.toFixed(2)}</p>
+            <h3>Expenses by Category</h3>
+            {Object.entries(byCategory).map(([category, amount]) => (
+                <p key={category}>{category}: ${amount.toFixed(2)}</p>
+            ))}
         </div>
     )
 }
