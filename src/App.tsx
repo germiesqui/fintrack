@@ -1,9 +1,18 @@
-import { ExpenseList } from "./components/ExpenseList"
+import { Routes, Route } from "react-router-dom"
+import { DashboardPage } from "./pages/DashboardPage"
+import { ExpensesPage } from "./pages/ExpensesPage"
+import { NotFoundPage } from "./pages/NotFoundPage"
+import { Navbar } from "./components/Navbar"
 
 export default function App() {
   return (
-    <div>
-      <ExpenseList/>
-    </div>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<DashboardPage />} />
+        <Route path="/expenses" element={<ExpensesPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </>
   )
 }
