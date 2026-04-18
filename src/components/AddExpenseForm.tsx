@@ -1,13 +1,12 @@
 import { useState } from "react"
 import type { ChangeEvent, SubmitEvent } from "react"
 import type { Expense } from "../types"
+import { useExpenses } from "../context/ExpenseContext"
 
-interface AddExpenseFormProps {
-  onAdd: (expense: Omit<Expense, "id">) => void
-}
 
-export function AddExpenseForm({ onAdd }: AddExpenseFormProps){
+export function AddExpenseForm(){
     const [form, setForm] = useState<Omit<Expense, 'id'>>({ name: '', amount:  0, category: "", date: ""})
+    const { addExpense } = useExpenses()
 
     function handleChange(e: ChangeEvent<HTMLInputElement>) {
         const value = e.target.name === "amount" ? Number(e.target.value) : e.target.value
@@ -16,7 +15,7 @@ export function AddExpenseForm({ onAdd }: AddExpenseFormProps){
 
     function handleSubmit(e: SubmitEvent<HTMLFormElement>) {
         e.preventDefault()
-        onAdd(form)
+        addExpense(form)
         setForm({ name: '', amount:  0, category: "", date: ""})
     }
 
