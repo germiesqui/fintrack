@@ -4,11 +4,12 @@ import type { Expense } from "../types"
 export function ExpenseCard({ name, amount, category, date }: Expense) {
 
   return (
-    <div>
-      <h2>{name}</h2>
-      <p>Amount: ${amount.toFixed(2)}</p>
-      <p>Category: {category}</p>
-      <p>Date: {date}</p>
+    <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 flex items-center justify-between">
+        <div>
+            <p className="font-semibold text-gray-900">{name}</p>
+            <p className="text-sm text-gray-400 mt-0.5">{category} · {date}</p>
+        </div>
+        <span className="text-green-600 font-semibold text-lg">${amount.toFixed(2)}</span>
     </div>
   )
 }

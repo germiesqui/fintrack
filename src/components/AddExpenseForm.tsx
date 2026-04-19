@@ -21,12 +21,35 @@ export function AddExpenseForm(){
 
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input type="text" name="name" value={form.name} onChange={handleChange} />
-            <input type="number" name="amount" value={form.amount} onChange={handleChange} />
-            <input type="text" name="category" value={form.category} onChange={handleChange} />
-            <input type="date" name="date" value={form.date} onChange={handleChange} />
-            <button type="submit">Add Expense</button>
+        <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-sm border border-gray-100 p-4">
+            <p className="font-semibold text-gray-700 mb-3">Add expense</p>
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                <input
+                    type="text" name="name" value={form.name} onChange={handleChange}
+                    placeholder="Name"
+                    className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-400"
+                />
+                <input
+                    type="number" name="amount" value={form.amount} onChange={handleChange}
+                    placeholder="Amount"
+                    className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-400"
+                />
+                <input
+                    type="text" name="category" value={form.category} onChange={handleChange}
+                    placeholder="Category"
+                    className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-400"
+                />
+                <input
+                    type="date" name="date" value={form.date} onChange={handleChange}
+                    className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-400"
+                />
+            </div>
+            <button
+                type="submit"
+                className="mt-3 w-full bg-green-500 hover:bg-green-600 text-white font-medium py-2 rounded-lg transition-colors text-sm"
+            >
+                Add expense
+            </button>
         </form>
     )
 }

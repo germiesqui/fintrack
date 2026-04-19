@@ -8,14 +8,23 @@ export function ExpenseList(){
     const { expenses, deleteExpense } = useExpenses()
 
     return (
-        <div>
+        <div className="flex flex-col gap-3">
             {expenses.map(expense => (
-                <div key={expense.id}>
-                    <ExpenseCard {...expense} />
-                    <button onClick={() => deleteExpense(expense.id)}>Delete</button>
+                <div key={expense.id} className="flex items-center gap-3">
+                    <div className="flex-1">
+                        <ExpenseCard {...expense} />
+                    </div>
+                    <button
+                        onClick={() => deleteExpense(expense.id)}
+                        className="text-sm text-red-400 hover:text-red-600 transition-colors font-medium px-2 py-1"
+                    >
+                        Delete
+                    </button>
                 </div>
             ))}
-            <AddExpenseForm />
+            <div className="mt-4">
+                <AddExpenseForm />
+            </div>
         </div>
     )
 }
